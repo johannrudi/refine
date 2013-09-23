@@ -22,7 +22,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-26
 %  ----------------------------------------------------------------------------
 
 function mask = refine_scaleMask(mask, dim, scaleTo)

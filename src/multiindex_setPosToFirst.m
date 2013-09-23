@@ -12,7 +12,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-22
 %  ----------------------------------------------------------------------------
 
 function multiindex = multiindex_setPosToFirst(multiindex)

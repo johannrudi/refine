@@ -20,7 +20,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-22
 %  ----------------------------------------------------------------------------
 
 function multiindex = multiindex_create(index_first, index_last)

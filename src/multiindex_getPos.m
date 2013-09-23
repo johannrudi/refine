@@ -12,7 +12,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-01-03
 %  ----------------------------------------------------------------------------
 
 function pos = multiindex_getPos(multiindex)

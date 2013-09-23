@@ -18,7 +18,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-25
 %  ----------------------------------------------------------------------------
 
 function index_1dim = multiindex_nDimTo1Dim_colMajor(index_ndim, ...

@@ -34,7 +34,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-29
 %  ----------------------------------------------------------------------------
 
 function y = refine_computeInitialValues(dim, numFncs, ...

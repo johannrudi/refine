@@ -14,7 +14,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-29
 %  ----------------------------------------------------------------------------
 
 function multiindex = boundedMultiindex_increment(multiindex)

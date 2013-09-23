@@ -22,7 +22,6 @@
 %
 %  ----------------------------------------------------------------------------
 %  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-22
 %  ----------------------------------------------------------------------------
 
 function multiindex = boundedMultiindex_create(bound, index_first)
