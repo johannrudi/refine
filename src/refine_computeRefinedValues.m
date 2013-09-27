@@ -1,24 +1,31 @@
-%refine_computeRefinedValues  Compute refined values recursively.
-%  TODO
+%REFINE_COMPUTEREFINEDVALUES Evaluate refinable fnc/integral at dyadic points.
+% Computes function values and derivatives of refinable functions at
+% dyadic points as well as integrals of products of refinable functions with
+% derivatives at dyadic points. This is done by computing the evaluation at
+% integer nodes with `refine_computeInitialValues` first, and then applying
+% the refinement relation recursively.
 %
-%  Syntax:
-%  y = refine_computeRefinedValues(dim, numFncs,
-%                                  mask, derivatives,
-%                                  index_first, index_last,
-%                                  numRefineSteps)
+% Syntax:
+% y = REFINE_COMPUTEREFINEDVALUES(dim, numFncs, mask, derivatives, ...
+%                                 index_first, index_last, numRefineSteps)
 %
-%  Input:
-%  mask{}[]          cell-array with mask coefficients of `phi_i`, `i=0,...,s`
-%  maskIndexStart[]  array with start indices of coefficients
-%  derivatives[]     derivatives `mu_i` of `phi_i`, `i=1,...,s` (optional)
-%  output            output preferences string (optional); 's': output on screen
+% Input:
+% dim             dimension of the functions' domains
+% numFncs         number of functions
+% mask{}[]        cell-array with mask coefficients of the functions
+% derivatives[]   derivatives of the functions
+% index_first[]   beginning of multi-index
+% index_last[]    end of multi-index
+% numRefineSteps  number of additional refinement steps
 %
-%  Output:
-%  y[]                y-values
+% Output:
+% y[]             function/integral values
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: REFINE_COMPUTEINITIALVALUES, REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function y = refine_computeRefinedValues(dim, numFncs, ...
                                          mask, derivatives, ...
@@ -31,13 +38,13 @@ function y = refine_computeRefinedValues(dim, numFncs, ...
 numNodes = prod(abs(index_last - index_first) + 1);
 
 
-%% If `numRefineSteps == 0`: Compute Initial y-Values On Integer x-Values
+%% If `numRefineSteps == 0`: Compute Initial y-Values at Integer x-Values
 
 if numRefineSteps == 0
-    % create vector for y-values (including y-values on border)
+    % create vector for y-values (including y-values at the boundary)
     y = zeros(numNodes, 1);
 
-    % compute initial (inner, i.e. not on border) y-values on integer nodes
+    % compute initial (inner, i.e. not at boundary) y-values at integer nodes
     y_init = refine_computeInitialValues(dim, numFncs, ...
                                          mask, derivatives, ...
                                          index_first, index_last);

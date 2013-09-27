@@ -1,8 +1,30 @@
-%%refine_computeIntMask  Compute mask coefficients of refinable integral.
-%TODO
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+%REFINE_COMPUTEINTMASK Compute mask coefficients of a refinable integral.
+% Computes the mask coefficients of a refinable integral from the
+% mask coefficients of the refinable functions in the integrand.
+%
+% Syntax:
+% intMask = REFINE_COMPUTEINTMASK(dim, numFncs, mask, derivatives, ...
+%                                 index_first, index_last, ...
+%                                 IndexMask_first, IndexMask_last)
+%
+% Input:
+% dim                dimension of the functions' domains
+% numFncs            number of functions
+% mask{}[]           cell-array with mask coefficients of the functions
+% derivatives[]      derivatives of the functions
+% index_first[]      beginning of multi-index of integral mask
+% index_last[]       end of multi-index of integral mask
+% IndexMask_first[]  beginning of multi-indices of all functions in integrand
+% IndexMask_last[]   end of multi-indices of all functions in integrand
+%
+% Output:
+% intMask            mask coefficients of a refinable integral
+%
+% See also: REFINE_COMPUTEINITIALVALUES, REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function intMask = refine_computeIntMask(dim, numFncs, mask, derivatives, ...
                                          index_first, index_last, ...
@@ -48,26 +70,11 @@ end
 
 
 
-%refine_computeIntMaskEntry  TODO
-%  Computes a mask coefficient of a refinable integral with mask coefficients
-%  of the functions `phi_i`, `i=1,...,s`.
+%REFINE_COMPUTEINTMASKENTRY Compute one entry of the integral mask coeff matrix.
 %
-%  Syntax:
-%  value = refine_int_coeff(index, coeff_0, coeff, numCoeff)
-%
-%  Input:
-%  index[]      multi-index of the mask coefficient to be computed
-%  coeff_0[]  mask coefficients of first function `phi_0`
-%  coeff{}[]    cell-array with mask coefficients of `phi_i`, `i=1,...,s`
-%  numCoeff[]   number of mask coefficients in `coeff`
-%
-%  Output:
-%  value        mask coefficient of refinable integral
-%
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  Last modified:  2012-06-25
-%  ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function entry = refine_computeIntMaskEntry(dim, numFncs, mask, index, ...
                                             muid_entry, ...

@@ -1,28 +1,33 @@
-%refine_scaleMask  Scale mask coefficients.
-%  Scales the mask coefficients of a refinable function to a desired value.
-%  The scaling is done according to the theory in [1] such that
-%    sum_{b} c_{a - 2*b}
-%  attains the desired value for all integers `a` (in the univariate case),
-%  where `c_{a - 2*b}` is a mask coefficient and `b` is an integer.
-%  In the multivariate case integers are replaced by multi-dimensional integers.
+%REFINE_SCALEMASK Scale mask coefficients of a refinable function.
+% Scales the mask coefficients of one refinable function to a desired value.
+% The scaling is done according to the theory in [1] such that
 %
-%  [1] W. Dahmen, C. A. Micchelli, "Using the refinement equation for computing
-%      integrals of wavelets," SIAM J. Numer. Anal. 30, 1993, pp. 507-537.
+%   sum_{k} c_{a - 2*k}
 %
-%  Syntax:
-%  mask = refine_scaleMask(mask, dim, scaleTo)
+% attains the desired value for all integers `a` (in the univariate case),
+% where `c_{a - 2*k}` is a mask coefficient and `k` is an integer.
+% In the multivariate case integers are replaced by multi-dimensional integers.
 %
-%  Input:
-%  mask[]   mask coefficients of a refinable function
-%  dim      dimension of domain of refinable function
-%  scaleTo  value that the mask coefficients will be scaled to
+% Syntax:
+% mask = REFINE_SCALEMASK(mask, dim, scaleTo)
 %
-%  Output:
-%  mask[]   scaled mask coefficients
+% Input:
+% mask[]   mask coefficients of a refinable function
+% dim      dimension of domain of refinable function
+% scaleTo  value that the mask coefficients will be scaled to
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% Output:
+% mask[]   scaled mask coefficients
+%
+% References:
+% [1] W. Dahmen, C. A. Micchelli, "Using the refinement equation for computing
+%     integrals of wavelets," SIAM J. Numer. Anal. 30, 1993, pp. 507-537.
+%
+% See also: REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function mask = refine_scaleMask(mask, dim, scaleTo)
 

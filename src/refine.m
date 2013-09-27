@@ -88,7 +88,6 @@
 
 function [x,y] = refine(mask, derivatives, numRefineSteps, varargin)
 
-
 %% Check Input & Set Basic Parameters
 
 % check number of functions constituted by mask coefficients `mask`

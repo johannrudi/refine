@@ -1,40 +1,29 @@
-%refine_computeInitialValues  Compute initial values.
-%  TODO
-%  Computes integrals of products of 1-dimensional refinable functions on
-%  integer nodes.
+%REFINE_COMPUTEINITIALVALUES Evaluate refinable fnc/integral at integer nodes.
+% Computes function values and derivatives of refinable functions at
+% integer nodes as well as integrals of products of refinable functions with
+% derivatives at integer nodes. The evaluation of a function or integral is
+% based on solving an eigenvector problem derived from the refinement equations.
 %
-%  Syntax:
-%  [X,y] = refine_computeInitialValues(mask, maskIndexStart, derivatives, output)
+% Syntax:
+% y = REFINE_COMPUTEINITIALVALUES(dim, numFncs, mask, derivatives, ...
+%                                 index_first, index_last)
 %
-%  Input:
-%  mask{}[]          cell-array with mask coefficients of `phi_i`, `i=0,...,s`
-%  maskIndexStart[]  array with start indices of coefficients
-%  derivatives[]     derivatives `mu_i` of `phi_i`, `i=1,...,s` (optional)
-%  output            output preferences string (optional); 's': output on screen
+% Input:
+% dim            dimension of the functions' domains
+% numFncs        number of functions
+% mask{}[]       cell-array with mask coefficients of the functions
+% derivatives[]  derivatives of the functions
+% index_first[]  beginning of multi-index
+% index_last[]   end of multi-index
 %
-%  Output:
-%  X[]                x-values
-%  y[]                y-values
+% Output:
+% y[]            function/integral values
 %
-%  Description:
-%  A refinable function `phi` satisfies a refinement equation
-%    phi(x) = \sum_{k \in ZZ} a_j phi(2 * x - k),   x \in RR,
-%  with mask coefficients `a_j`.
+% See also: REFINE_COMPUTEREFINEDVALUES, REFINE.
 %
-%  Integrals `H(alpha)` of products of refinable functions `phi_i`
-%    H(alpha) = \int phi_0(x) * (D^{mu_1} phi_1)(x - alpha_1) * ...
-%                   * (D^{mu_s} phi_s)(x - alpha_s) dx,   alpha \in ZZ^s,
-%  also satisfy a refinement equation with mask coefficients that can be
-%  computet using the mask coefficients of `phi_i`, `i=1,...,s`. These
-%  integrals are called refinable integrals.
-%
-%  References:
-%  [1] W. Dahmen, C. A. Micchelli, "Using the refinement equation for computing
-%      integrals of wavelets," SIAM J. Numer. Anal. 30, 1993, pp. 507-537.
-%
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function y = refine_computeInitialValues(dim, numFncs, ...
                                          mask, derivatives, ...
@@ -55,13 +44,10 @@ absNumDeriv = sum(sum(abs(derivatives)));
 derivConst = 1 / (2^absNumDeriv);
 
 % compute the number of possibilities of derivatives lower or equal
-% `absNumDeriv` using the formula: TODO: does not seem to be what's computed
-%   #possibilities to choose `index_dim` out of `n` non-distinguishable objects
 n = 0:absNumDeriv;
 numPoss = sum( ...
-              factorial(n + (index_dim - 1) * ones(size(n))) ...
-              ./ factorial(n) ...
-              ./ factorial((index_dim - 1) * ones(size(n))) ...
+    factorial(n + (index_dim - 1) * ones(size(n))) ./ factorial(n) ...
+    ./ factorial((index_dim - 1) * ones(size(n))) ...
 );
 
 
@@ -72,7 +58,6 @@ A = zeros(index_numElements + numPoss, index_numElements);
 b = zeros(index_numElements + numPoss, 1);
 
 % create multi-index for looping over matrix rows or columns
-%TODO delete this? muid_row = multiindex_create(index_first, index_last);
 muid_row = multiindex_create(index_first + 1, index_last - 1);
 
 % set upper part of matrix `A`
@@ -123,8 +108,8 @@ while ~isEnd_row % loop over all row multi-indices
     row = row + 1;
 end
 
-%TODO maybe use diag?
 % subtract derivatives constant `derivConst` from diagonal
+%TODO maybe use diag()?
 diag_selector = 1 : index_numElements + numPoss + 1 : ...
                 index_numElements * (index_numElements + numPoss);
 A(diag_selector) = A(diag_selector) - derivConst;
@@ -174,14 +159,13 @@ end
 
 
 %% Solve System of Linear Equations
-% gives us y-values on integer x-values
 
-% solve
+% solve; gives us y-values on integer x-values
 y = A \ b;
 
-if numFncs > 1 % if values of integral are computed
-    % scale solution of `y` at integer nodes according to 3rd equation in [1]
-    % on p. 528
+if numFncs > 1 % if integral evaluation
+    % scale solution of `y` at integer nodes according to 3rd equation in
+    % [Dahmen, Micchelli, 1993, p. 528]
     y = y * (-1)^absNumDeriv;
 end
 
