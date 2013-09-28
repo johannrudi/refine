@@ -1,13 +1,16 @@
-%refine_init  Initialize the Refine program.
-%  Performs operations that are necessary in order to use the Refine program.
-%  Needs to be executed once before running the program.
+%REFINE_INIT Initialize the Refine program.
+% Performs operations that are necessary in order to use the Refine program.
+% Needs to be executed once per MATLAB session before running the
+% main program: `refine`.
 %
-%  Syntax:
-%  refine_init
+% Syntax:
+% REFINE_INIT
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function refine_init()
 

@@ -3,7 +3,7 @@
 % mask coefficients of the refinable functions in the integrand.
 %
 % Syntax:
-% intMask = REFINE_COMPUTEINTMASK(dim, numFncs, mask, derivatives, ...
+% intMask = REFINE_COMPUTEINTMASK(dim, numFncs, mask, ...
 %                                 index_first, index_last, ...
 %                                 IndexMask_first, IndexMask_last)
 %
@@ -11,7 +11,6 @@
 % dim                dimension of the functions' domains
 % numFncs            number of functions
 % mask{}[]           cell-array with mask coefficients of the functions
-% derivatives[]      derivatives of the functions
 % index_first[]      beginning of multi-index of integral mask
 % index_last[]       end of multi-index of integral mask
 % IndexMask_first[]  beginning of multi-indices of all functions in integrand
@@ -26,7 +25,7 @@
 % Author:    Johann Rudi <johann@ices.utexas.edu>
 % ----------------------------------------------------------------------------
 
-function intMask = refine_computeIntMask(dim, numFncs, mask, derivatives, ...
+function intMask = refine_computeIntMask(dim, numFncs, mask, ...
                                          index_first, index_last, ...
                                          IndexMask_first, IndexMask_last)
 

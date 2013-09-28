@@ -4,7 +4,7 @@
 % REFINE_PRINTL(string)
 %
 % Input:
-% string     string that will be printed
+% string  string that will be printed
 %
 % ----------------------------------------------------------------------------
 % Author:    Johann Rudi <johann@ices.utexas.edu>

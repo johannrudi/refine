@@ -7,11 +7,11 @@
 %
 % A refinable function `f` satisfies the refinement equation
 %
-%   f(x) = \sum_{k} a_k * f(2 * x - k),
+%   f(x) = \sum_{j} a_j * f(2 * x - j),
 %
-% with some mask coefficients `a_k`. The variables `x` and `k` are scalars or
+% with some mask coefficients `a_j`. The variables `x` and `j` are scalars or
 % vectors of the same dimension `d`, where `x` is a real scalar/vector
-% and `k` is an integer scalar/vector. Integrals `I(z)` of products of
+% and `j` is an integer scalar/vector. Integrals `I(z)` of products of
 % refinable functions `f_i` with derivatives `D^(m_i)` have the form
 %
 %   I(z) = \int f_0(x) * [D^(m_1) f_1](x - z_1)
@@ -407,7 +407,7 @@ else % if evaluation of integral
                  reshape(IndexMask_first(2:end,:)', (numFncs - 1) * dim, 1);
 
     % compute mask coefficients of the integral
-    mask = refine_computeIntMask(dim, numFncs, mask, derivatives, ...
+    mask = refine_computeIntMask(dim, numFncs, mask, ...
                                  index_first, index_last, ...
                                  IndexMask_first, IndexMask_last);
 end
