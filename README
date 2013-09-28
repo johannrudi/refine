@@ -1,0 +1,67 @@
+This is the README file for Refine.
+
+Refine is a MATLAB program that evaluates refinable functions and integrals.
+This means it computes function values and derivatives of refinable functions
+as well as integrals of products of refinable functions with derivatives.
+
+Refine is written by Johann Rudi.
+
+
+>> Acknowledgement and Disclaimer:
+
+The development of Refine was supported by a research assistant position at the
+Universitaet Paderborn, Germany, in Prof. Angela Kunoth's group.
+
+
+>> Overview of the Program's Functionality:
+
+The evaluation of a refinable function or integral is based on solving an
+eigenvector problem derived from the refinement equations. The computed values
+are exact up to roundoff and no quadrature rules are used. The theory was
+developed in [1].
+A refinable function `f` satisfies the refinement equation
+
+  f(x) = \sum_{j} a_j * f(2 * x - j),
+
+with some mask coefficients `a_j`. The variables `x` and `j` are scalars or
+vectors of the same dimension `d`, where `x` is a real scalar/vector
+and `j` is an integer scalar/vector. Integrals `I(z)` of products of
+refinable functions `f_i` with derivatives `D^(m_i)` have the form
+
+  I(z) = \int f_0(x) * [D^(m_1) f_1](x - z_1)
+                     * ...
+                     * [D^(m_s) f_l](x - z_l) \dx,
+
+where `z` is an `s`-dimensional vector of integers and `s = l * d`.
+Note that `f_0` has no derivatives, so `m_0 = 0` always holds. `I(z)` also
+satisfies a refinement equation with mask coefficients that can be computed
+using the mask coefficients of `f_i`, `i = 1,...,s`. These type of integrals
+are called refinable integrals.
+After obtaining the function/integral values at integer nodes, Refine can
+compute values at dyadic points by applying the refinement relation recursively.
+The user provides the mask coefficients of the refinable functions and can
+specify how many derivatives should be taken.
+
+
+>> Running the Program:
+
+In order to set up the Refine program, the function `refine_init` in the main
+directory has to be called (at least) once per MATLAB session. Now,
+the program can be run by calling `refine` with its parameters. Please see
+the documentation via `help refine` for information how to use the program.
+A number of examples are provided in the main directory, they are:
+
+  example_fnc_1d_bspline - Evaluation of 1-D cardinal B-Spline function.
+  example_fnc_1d_daub3   - Evaluation of 1-D Daubechies' refinable function.
+  example_fnc_2d         - Evaluation of 2-D box spline.
+  example_fnc_3d         - Evaluation of 3-D box spline.
+
+  example_int_1d - Evaluation of refinable integral of four 1-D functions.
+  example_int_2d - Evaluation of refinable integral of three 2-D functions.
+  example_int_3d - Evaluation of refinable integral of two 3-D functions.
+
+
+>> References:
+
+[1] W. Dahmen, C. A. Micchelli, "Using the refinement equation for computing
+    integrals of wavelets," SIAM J. Numer. Anal. 30, 1993, pp. 507-537.
