@@ -1,27 +1,32 @@
-%multiindex_nDimTo1Dim_incrByPowOfTwo  Map 2^k incr. multi-index to scalar.
-%  Maps the current position of a multi-index to an unique one-dimensional
-%  (scalar) value. The value that the multi-index is incremented by has to be
-%  a power of `2`.
+%MULTIINDEX_NDIMTO1DIM_INCRBYPOWOFTWO Map 2^k incr. multi-index to scalar.
+% Maps the current position of a multi-index to a unique one-dimensional
+% (scalar) value. The value that the multi-index is incremented by has to be
+% a power of `2`.
 %
-%  Syntax:
-%  index_1dim = multiindex_nDimTo1Dim_incrByPowOfTwo(index_ndim,
-%                                                    index_first,
-%                                                    index_last,
-%                                                    incrementBy)
+% Syntax:
+% index_1dim = MULTIINDEX_NDIMTO1DIM_INCRBYPOWOFTWO(index_ndim,
+%                                                   index_first,
+%                                                   index_last,
+%                                                   incrementBy)
 %
-%  Input:
-%  index_ndim[]   current position of a multi-index (integer/float array)
-%  index_first[]  first index (integer array)
-%  index_last[]   last index (integer array)
-%  incrementBy    scalar value that the multi-index is incremented by,
-%                 which has to be a power of `2`
+% Input:
+% index_ndim[]   current position of a multi-index (integer/float array)
+% index_first[]  first index (integer array)
+% index_last[]   last index (integer array)
+% incrementBy    scalar value that the multi-index is incremented by,
+%                which has to be a power of `2`
 %
-%  Output:
-%  index_1dim     one-dimensional index
+% Output:
+% index_1dim     one-dimensional index
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: MULTIINDEX_CREATE, MULTIINDEX_INCREMENT_COLMAJOR,
+% MULTIINDEX_INCREMENT_ROWMAJOR, MULTIINDEX_NDIMTO1DIM_COLMAJOR,
+% MULTIINDEX_NDIMTO1DIM_ROWMAJOR.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
+
 function index_1dim = multiindex_nDimTo1Dim_incrByPowOfTwo( ...
                           index_ndim, ...
                           index_first, ...

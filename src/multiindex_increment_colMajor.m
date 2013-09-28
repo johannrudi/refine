@@ -1,25 +1,29 @@
-%multiindex_increment_colMajor  Increment multi-index (column-major).
-%  Increments the current position of a multi-index structure in
-%  "column-major order," i.e., first entry of the multi-index gets incremented
-%  first.
+%MULTIINDEX_INCREMENT_COLMAJOR Increment multi-index (column-major).
+% Increments the current position of a multi-index structure in
+% "column-major order," i.e., first entry of the multi-index gets incremented
+% first.
 %
-%  Syntax:
-%  multiindex = multiindex_increment_colMajor(multiindex, [incrementBy])
-%  [multiindex,isEnd] = multiindex_increment_colMajor(multiindex, [incrementBy])
+% Syntax:
+% multiindex = MULTIINDEX_INCREMENT_COLMAJOR(multiindex, [incrementBy])
+% [multiindex,isEnd] = MULTIINDEX_INCREMENT_COLMAJOR(multiindex, [incrementBy])
 %
-%  Input:
-%  multiindex   multi-index structure as provided by `multiindex_create`
-%  incrementBy  scalar value between zero and one that the multi-index is
-%               incremented by (optional input, default is `1`)
+% Input:
+% multiindex   multi-index structure as provided by `multiindex_create`
+% incrementBy  scalar value between zero and one that the multi-index is
+%              incremented by (optional input, default is `1`)
 %
-%  Output:
-%  multiindex   multi-index structure with incremented position
-%  isEnd        `1` if multi-index reached its end, i.e., multi-index position
-%               is beyond end, `0` otherwise (optional output)
+% Output:
+% multiindex   multi-index structure with incremented position
+% isEnd        `1` if multi-index reached its end, i.e., multi-index position
+%              is beyond end, `0` otherwise (optional output)
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: MULTIINDEX_CREATE, MULTIINDEX_INCREMENT_ROWMAJOR,
+% MULTIINDEX_NDIMTO1DIM_COLMAJOR, MULTIINDEX_NDIMTO1DIM_INCRBYPOWOFTWO,
+% MULTIINDEX_NDIMTO1DIM_ROWMAJOR.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function [multiindex,varargout] = multiindex_increment_colMajor(multiindex, ...
                                                                 incrementBy)

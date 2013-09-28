@@ -1,24 +1,28 @@
-%multiindex_nDimTo1Dim_rowMajor  Map multi-index to scalar index (row-major).
-%  Maps the current position of a multi-index to a unique one-dimensional
-%  (scalar) value inside an interval beginning at `0`. This can be used to
-%  address elements of a matrix in row-major order.
+%MULTIINDEX_NDIMTO1DIM_ROWMAJOR Map multi-index to scalar index (row-major).
+% Maps the current position of a multi-index to a unique one-dimensional
+% (scalar) value inside an interval beginning at `0`. This can be used to
+% address elements of a matrix in row-major order.
 %
-%  Syntax:
-%  index_1dim = multiindex_nDimTo1Dim_rowMajor(index_ndim,
-%                                              index_first,
-%                                              index_last)
+% Syntax:
+% index_1dim = MULTIINDEX_NDIMTO1DIM_ROWMAJOR(index_ndim,
+%                                             index_first,
+%                                             index_last)
 %
-%  Input:
-%  index_ndim[]   current position of a multi-index (integer array)
-%  index_first[]  first index (integer array)
-%  index_last[]   last index (integer array)
+% Input:
+% index_ndim[]   current position of a multi-index (integer array)
+% index_first[]  first index (integer array)
+% index_last[]   last index (integer array)
 %
-%  Output:
-%  index_1dim     one-dimensional index (beginning at `0`)
+% Output:
+% index_1dim     one-dimensional index (beginning at `0`)
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: MULTIINDEX_CREATE, MULTIINDEX_INCREMENT_COLMAJOR,
+% MULTIINDEX_INCREMENT_ROWMAJOR, MULTIINDEX_NDIMTO1DIM_COLMAJOR,
+% MULTIINDEX_NDIMTO1DIM_INCRBYPOWOFTWO.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function index_1dim = multiindex_nDimTo1Dim_rowMajor(index_ndim, ...
                                                      index_first, ...
