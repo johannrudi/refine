@@ -1,9 +1,14 @@
-%example_fct_3d  Evaluation of 3-D box spline.
-%  TODO
+%EXAMPLE_FNC_3D Evaluation of 3-D box spline.
+% Evaluates a three-dimensional box spline. Since the domain has dimension 3,
+% the mask coefficients will be provided by an `n*n*n` matrix, where the number
+% of entries in each dimension, `n`, is chosen to be 5 here.
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: EXAMPLE_FNC_1D_BSPLINE, EXAMPLE_FNC_1D_DAUB3, EXAMPLE_FNC_2D.
+% REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 %% Set MATLAB Environment
 
@@ -54,14 +59,15 @@ mask(5,:,:) = [
     0.0     0.0     0.0     0.0625  0.0625 ...
 ];
 
-% set derivatives matrix with `num_cols = dimension`
+% set derivative vector (number of columns = dimension of function's domain)
 deriv = [0 0 0];
 
-% set number of refine steps
+% set number of refine steps s.t. we only evaluate at integer nodes
 numRefineSteps = 0;
 
 
-%% Evaluate Refinable Function
+%% Compute Function Evaluation
 
-% compute refinable function
+% evaluate refinable function
 [x,y] = refine(mask, deriv, numRefineSteps, 'Display','on');
+

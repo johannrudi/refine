@@ -1,9 +1,19 @@
-%example_fct_1d_bspline  Evaluation of 1-D cardinal B-splines.
-%  TODO
+%EXAMPLE_FNC_1D_BSPLINE Evaluation of 1-D cardinal B-Spline function.
+% Evaluates a univariate cardinal B-Spline, `N_k(x)`, of order `k`.
+% These are B-Splines on a grid with uniform spacing, they satisfy the
+% refinement relation
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+%   N_k(x) = 2^{1-k} * \sum_{j=0..k} (k choose j) N_k(2*x - j),
+%
+% where x is a real scalar. Hence, the mask is the (row) vector
+%
+%   M = 2^{k-1} * [(k choose 0), (k choose 1), ..., (k choose k)].
+%
+% See also: EXAMPLE_FNC_1D_DAUB3, EXAMPLE_FNC_2D, EXAMPLE_FNC_3D, REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 %% Set MATLAB Environment
 
@@ -17,46 +27,46 @@ refine_init
 
 %% Set Parameters
 
-% set b-spline order
+% set B-Spline order
 bsplineOrder = 4;
 
-% set derivatives matrix with `num_cols = dimension`
+% set derivative of B-Spline
 deriv = 0;
 
-% set number of refine steps
+% set number of recursive refine steps
 numRefineSteps = 4;
 
-% set start index of mask coefficients
+% set start index for mask coefficients s.t. B-Spline is centered about zero
 firstMaskIndex = -2;
 
 
-%% Evaluate Refinable Function
+%% Compute Function Evaluation
 
 % compute mask coefficients
-mask = factorial(bsplineOrder) * ones(1, bsplineOrder+1) ...
+mask = factorial(bsplineOrder) * ones(1, bsplineOrder + 1) ...
        ./ factorial(bsplineOrder:-1:0) ...
-       ./ factorial(0:bsplineOrder) / 2^(bsplineOrder-1);
+       ./ factorial(0:bsplineOrder) / 2^(bsplineOrder - 1);
 
-% compute refinable function
+% evaluate refinable function
 [x,y] = refine(mask, deriv, numRefineSteps, ...
                'FirstMaskIndex',firstMaskIndex, 'Display','on');
 
 
 %% Plot
 
-% extend graph for plot
+% extend data for plot
 x = [x(1) - abs(x(end) - x(1))/8 ; x ; x(end) + abs(x(end) - x(1))/8];
-y = [0 ; y ; 0];
+y = [y(1) ; y ; y(end)];
 
 % plot function
 figure(1)
 hPlot = plot(x(2:end-1),y(2:end-1),'or', x,y,'-b');
 
 % format plot
-hTitle = title(['B-Spline of order ' num2str(bsplineOrder) ...
-                ', derivative=' num2str(deriv)]);
+hTitle = title('Evaluation of refinable 1-D cardinal B-Spline function');
 hXLabel = xlabel('x');
-hYLabel = ylabel('y');
+hYLabel = ylabel(['B-Spline, order ' num2str(bsplineOrder) ...
+                  ', derivative ' num2str(deriv)]);
 
 set([hXLabel, hYLabel]         , ...
     'FontSize'   , 10          );

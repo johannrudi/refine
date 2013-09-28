@@ -1,9 +1,16 @@
-%example_int_3d  Evaluation of integral of two 3-D functions.
-%  TODO
+%EXAMPLE_INT_3D Evaluation of refinable integral of two 3-D functions.
+% Evaluates a refinable integral with two factors of refinable 3-D functions
+% in the integral:
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+%   I(z) = \int f_0(x) * f_1(x - z_1) \dx,
+%
+% where `f_0, f_1` are box splines and `z_1` is a 3-dimensional integer vector.
+%
+% See also: EXAMPLE_INT_1D, EXAMPLE_INT_2D, REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 %% Set MATLAB Environment
 
@@ -54,10 +61,13 @@ a_0(5,:,:) = [
     0.0     0.0     0.0     0.0625  0.0625 ...
 ];
 a_1 = a_0;
+
+% combine the mask coefficients into a cell-array
 mask = {a_0, a_1};
 
 
-%% Evaluate Refinable Integral
+%% Compute Integral Evaluation
 
-% compute refinable integral
+% evaluate refinable integral
 [x,y] = refine(mask, 0, 0, 'Display','on');
+

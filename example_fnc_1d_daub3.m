@@ -1,9 +1,12 @@
-%example_fct_1d_daub3  Evaluation of Daubechies' refinable function.
-%  TODO
+%EXAMPLE_FNC_1D_DAUB3 Evaluation of 1-D Daubechies' refinable function.
+% Evaluates the Daubechies’ refinable function `phi_N` which generate
+% orthogonal wavelets with compact support for `N = 3`.
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: EXAMPLE_FNC_1D_BSPLINE, EXAMPLE_FNC_2D, EXAMPLE_FNC_3D, REFINE.
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 %% Set MATLAB Environment
 
@@ -26,22 +29,22 @@ mask = [ 0.332670552950 ...
          0.035226291882 ...
 ];
 
-% set derivatives matrix with `num_cols = dimension`
+% set derivative
 deriv = 0;
 
 % set number of refine steps
 numRefineSteps = 5;
 
 
-%% Evaluate Refinable Function
+%% Compute Function Evaluation
 
-% compute refinable function
+% evaluate refinable function
 [x,y] = refine(mask, deriv, numRefineSteps);
 
 
 %% Plot
 
-% extend graph for plot
+% extend data for plot
 x = [-1 ; x ; 5];
 y = [0 ; y ; 0];
 
@@ -50,10 +53,9 @@ figure(1)
 hPlot = plot(x, y);
 
 % format plot
-hTitle = title(['Daubechies'' refinable function \phi_3, ' ...
-                'derivative=' num2str(deriv)]);
+hTitle = title('Evaluation of 1-D Daubechies'' refinable function');
 hXLabel = xlabel('x');
-hYLabel = ylabel('y');
+hYLabel = ylabel('Daubechies'' function phi_3');
 
 set([hXLabel, hYLabel]         , ...
     'FontSize'   , 10          );
