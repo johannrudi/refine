@@ -1,20 +1,23 @@
-%boundedMultiindex_increment  Increment bounded multi-index (row-major).
-%  Increments the current position of a bounded multi-index structure in
-%  "row-major order," i.e., last entry of the multi-index gets incremented
-%  first.
+%BOUNDEDMULTIINDEX_INCREMENT Increment bounded multi-index (row-major).
+% Increments the current position of a bounded multi-index structure in
+% "row-major order," i.e., last entry of the multi-index gets incremented
+% first.
 %
-%  Syntax:
-%  multiindex = boundedMultiindex_increment(multiindex)
+% Syntax:
+% multiindex = BOUNDEDMULTIINDEX_INCREMENT(multiindex)
 %
-%  Input:
-%  multiindex  multi-index structure as provided by `boundedMultiindex_create`
+% Input:
+% multiindex  multi-index structure as provided by `boundedMultiindex_create`
 %
-%  Output:
-%  multiindex  multi-index structure with incremented position
+% Output:
+% multiindex  multi-index structure with incremented position
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% See also: BOUNDEDMULTIINDEX_CREATE, BOUNDEDMULTIINDEX_GETPOS,
+% BOUNDEDMULTIINDEX_ISEND
+%
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function multiindex = boundedMultiindex_increment(multiindex)
 
