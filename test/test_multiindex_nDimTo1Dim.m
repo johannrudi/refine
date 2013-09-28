@@ -1,17 +1,17 @@
-%%test_multiindex_nDimTo1Dim  Test mappings from multi- to sclar indices.
-%  Tests the mappings of multi-indices to sclar (one-dimensional) indices by
-%  creating matrices and filling them with consecutive numbers in row-major
-%  order and column-major order.
+%TEST_MULTIINDEX_NDIMTO1DIM Test mappings from multi- to sclar indices.
+% Tests the mappings of multi-indices to sclar (one-dimensional) indices by
+% creating matrices and filling them with consecutive numbers in row-major
+% order and column-major order.
 %
-%  Syntax:
-%  test_multiindex_nDimTo1Dim(l, m, n)
+% Syntax:
+% TEST_MULTIINDEX_NDIMTO1DIM(l, m, n)
 %
-%  Input:
-%  l, m, n  matrix dimensions
+% Input:
+% l, m, n  matrix dimensions
 %
-%  ----------------------------------------------------------------------------
-%  Author:         Johann Rudi <johann@ices.utexas.edu>
-%  ----------------------------------------------------------------------------
+% ----------------------------------------------------------------------------
+% Author:    Johann Rudi <johann@ices.utexas.edu>
+% ----------------------------------------------------------------------------
 
 function test_multiindex_nDimTo1Dim(l, m, n)
 
