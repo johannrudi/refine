@@ -65,3 +65,6 @@ A number of examples are provided in the main directory, they are:
 
 [1] W. Dahmen, C. A. Micchelli, "Using the refinement equation for computing
     integrals of wavelets," SIAM J. Numer. Anal. 30, 1993, pp. 507-537.
+
+[2] A. Kunoth, "Computing Refinable Integrals - Documentation of the Program,
+    Version 1.1," May 1995, Technical Report ISC-95-02-MATH
